@@ -4,16 +4,17 @@ pub fn read_input() -> String {
     input.trim().to_owned()
 }
 
-// Modify the code from the previous exercise to use c-like struct variants instead of tuple struct variants.
 pub enum Exercise {
-    OpenText{ question: String,answer: String },
-    MultipleChoice{ question: String, choices: Vec<String>, answer_index: usize },
+    // Modify the variants to include data required by the practice method
+    OpenText(String, String),
+    MultipleChoice(String, Vec<String>, usize),
 }
 
 impl Exercise {
+    // Do not modify this method
     fn practice(&self) {
         match self {
-            Self::OpenText{ question,answer } => {
+            Self::OpenText(question, answer) => {
                 println!("{}", question);
                 let input = read_input();
                 if input == *answer {
@@ -22,11 +23,7 @@ impl Exercise {
                     println!("Incorrect!");
                 }
             }
-            Self::MultipleChoice{
-                question,
-                choices,
-                answer_index,
-            } => {
+            Self::MultipleChoice(question, choices, answer_index) => {
                 println!("{}", question);
                 for (i, choice) in choices.iter().enumerate() {
                     println!("{}. {}", i + 1, choice);
@@ -46,21 +43,21 @@ impl Exercise {
 }
 
 fn main() {
-    let exercise1 = Exercise::MultipleChoice {
-        question: "Which of the following is a valid identifier in Rust?".to_string(),
-        choices: vec![
+    let exercise1 = Exercise::MultipleChoice(
+        "Which of the following is a valid identifier in Rust?".to_string(),
+        vec![
             "1abc".to_string(),
             "_abc1".to_string(),
             "abc-1".to_string(),
             "-abc1".to_string(),
         ],
-        answer_index: 1,
-    };
+        1,
+    );
 
-    let exercise2 = Exercise::OpenText {
-        question: "What is the answer to life, the universe, and everything?".to_string(),
-        answer: "42".to_string(),
-    };
+    let exercise2 = Exercise::OpenText(
+        "What is the answer to life, the universe, and everything?".to_string(),
+        "42".to_string(),
+    );
 
     exercise1.practice();
     exercise2.practice();
