@@ -1,0 +1,4 @@
+{"question": "What is the name of the Rust compiler?", "choices": ["rustup", "rust", "rustc", "rust-compiler"], "correct_index": 0}
+{"question": "What is the name of the Rust package registry?", "choices": ["crates.io", "cargo.io", "rust.io"], "correct_index": 0}
+{"question": "What standard library module contains the `Stdin` struct for reading input?", "choices": ["std::io", "std::fmt", "std::input"], "correct_index": 0}
+{"question": "What standard library module contains the `Stderr` struct for writing error messages?", "choices": ["std::io", "std::fmt", "std::error"], "correct_index": 0}
